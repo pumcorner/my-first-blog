@@ -1,22 +1,28 @@
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>Leke co.Ltd.</title>
     </head>
-    <body>
-        <div>
-            <h1><a href="/">Django Girls Blog</a></h1>
+
+    <body vlink = "blue" bgcolor = "silver" text = "black">
+
+        <div id = "title" align = "middle">
+          <h1><b><big><font color = "red">LEKE SHEEP FARM</big></h1>
         </div>
 
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Aenean eu leo quam. <br>Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <div id = "menu" align = "middle" >
+            <a href="/">About us</a>|
+            <a href="">Contact us</a>
         </div>
 
+        <div id = "posts" align = "middle">
+          <h2><font color = "brown">POST LIST</h2>
+          </div>
+        {% for post in current_posts %}
         <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. <br>Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
+          <h3><a href="">{{post.title}}</a></h3>
+          <p>published: {{post.published_date}}</p>
+          <p>{{post.text|linebreaksbr}}</p>
         </div>
+        {% endfor %}
     </body>
 </html>
