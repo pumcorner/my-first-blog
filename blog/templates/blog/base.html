@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+    <head>
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <title >SilinLi</title>
+    </head>
+    <body class="bgcolor">
+        <div>
+            <h1 class="color-white">SilinLi's blog</h1>
+        </div>
+        <div class="page-image">
+          {% block content%}
+          {% endblock %}
+            </div>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block content%}
+<div class="page-image">
+  {% if posts.published_date %}
+    <div class="date">
+      {{posts.published_date}}
+      </div>
+    {%endif%}
+  <h2 class="color-blue">{{posts.title}}</h2>
+  <p class="post">{{ posts.text|linebreaksbr }}</p>
+  </div>
+  {% endblock %}

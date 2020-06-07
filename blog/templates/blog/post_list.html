@@ -1,28 +1,11 @@
-<html>
-    <head>
-        <title>Leke co.Ltd.</title>
-    </head>
+{% extends 'blog/base.html' %}
 
-    <body vlink = "blue" bgcolor = "silver" text = "black">
-
-        <div id = "title" align = "middle">
-          <h1><b><big><font color = "red">LEKE SHEEP FARM</big></h1>
-        </div>
-
-        <div id = "menu" align = "middle" >
-            <a href="/">About us</a>|
-            <a href="">Contact us</a>
-        </div>
-
-        <div id = "posts" align = "middle">
-          <h2><font color = "brown">POST LIST</h2>
-          </div>
-        {% for post in current_posts %}
-        <div>
-          <h3><a href="">{{post.title}}</a></h3>
-          <p>published: {{post.published_date}}</p>
-          <p>{{post.text|linebreaksbr}}</p>
-        </div>
-        {% endfor %}
-    </body>
-</html>
+{% block content%}
+{% for post in current_posts %}
+  <div class="date">
+    <p>published: {{ post.published_date }}</p>
+      </div>
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+          <p class="post">{{ post.text|linebreaksbr }}</p>
+  {% endfor %}
+{% endblock %}
