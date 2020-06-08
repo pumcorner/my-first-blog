@@ -6,11 +6,12 @@ h1{
 h2{
   margin-left: 80px;
   font-family: "Lobster";
+  color:blue;
 }
 .date{
   font-size: 10px;
-  color: brown;
-  text-align: right;
+  color: #A0522D;
+  text-align:justify;
 }
 .post{
   color: black;
@@ -26,11 +27,84 @@ h2{
   overflow: hidden;
 }
 .color-white{
-  color: white;
+  color: #FF7744;
 }
 .color-blue{
-  color: red;
+  color: #0000CC;
 }
 .bgcolor{
-  background-color:#C25100;
+  background-image:linear-gradient(to bottom,#003C9D , #99FFFF,#008888);
+}
+.new-post-btn{
+  position: absolute;
+  left:2%; top: 15%;
+}
+.newbtn{
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  padding: 12px 24px;
+  text-align: center;
+  margin-left: 40%;
+  font-weight: bold;
+  background-color: white;
+  border: 2px solid #4CAF50;
+}
+.newbtn:hover{
+  background-color: #4CAF50;
+  color: white;
+}
+.new-post{
+  width: 60%;
+  margin-left: 50px;
+}
+.post-border{
+  border-radius: 10%;
+  border-width: thin;
+  border-color: silver;
+  border-style: solid;
+}
+.btn-edit{
+  font-style: oblique;
+  font-weight: bold;
+  margin-left: 100px;
+}
+css-icon {
+  display: inline-block;
+  height: 1em; width: 1em;
+  font-size: 20px;
+  box-sizing: border-box;
+  text-indent: -9999px;
+  vertical-align: middle;
+  position: relative;
+}
+css-icon::before,
+css-icon::after {
+  content: '';
+  box-sizing: inherit;
+  position: absolute;
+  left: 50%; top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.icon-edit::before {
+  border: 2px solid;
+  width: .85em; height: .4em;
+  -ms-transform: translate(-.35em, -.25em) rotate(-45deg);
+  transform: translate(-.35em, -.25em) rotate(-45deg);
+}
+.icon-edit::after {
+  border: .15em solid;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  left: 5%; top: 95%;
+  -ms-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+}
+.icon-plus::before {
+  width: 90%;
+  border-top: 2px solid;
+}
+.icon-plus::after {
+  height: 90%;
+  border-left: 2px solid;
 }
