@@ -1,17 +1,19 @@
 h1{
   text-align: center;
   font-size: 100px;
-  font-family: "Lobster";
+  font-family: 'Lobster';
 }
 h2{
-  margin-left: 80px;
-  font-family: "Lobster";
-  color:blue;
+    margin-left: 100px;
+    font-size: 60px;
+    font-family:'Lobster',fantasy;
+    color: white;
 }
 .date{
-  font-size: 10px;
+  font-size: 20px;
   color: #A0522D;
   text-align:justify;
+  font-weight: bolder;
 }
 .post{
   color: black;
@@ -27,7 +29,7 @@ h2{
   overflow: hidden;
 }
 .color-white{
-  color: #FF7744;
+  color: #A0522D;
 }
 .color-blue{
   color: #0000CC;
@@ -107,4 +109,36 @@ css-icon::after {
 .icon-plus::after {
   height: 90%;
   border-left: 2px solid;
+}
+.icon-info::before {
+  width: .9em; height: .9em;
+  border: 2px solid;
+  border-radius: 50%;
+}
+.icon-info::after {
+  width: 2px; height: .5em;
+  border-top: .3em solid;
+  border-bottom: .1em solid;
+}
+.icon-person::before {
+  width: .45em; height: .45em;
+  border: 2px solid;
+  border-radius: 50%;
+  top: 25%;
+}
+.icon-person::after {
+  width: .9em; height: .4em;
+  border: 2px solid;
+  border-radius: 50% 50% 0 0;
+  top: 75%;
+}
+.icon-stop::before {
+  width: .9em;
+  border-top: 2px solid;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.icon-stop::after {
+  width: .9em; height: .9em;
+  border: 2px solid;
+  border-radius: 50%;
 }

@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content%}
+<a href="{% url 'homepage' %}">&#8629HomePage</a>
 {% for post in current_posts %}
   <div class="date">
     <p>published: {{ post.published_date }}</p>

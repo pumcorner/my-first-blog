@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<a href="{% url 'post_list' %}">&#8629HomePage</a>
+<a href="{% url 'homepage' %}">&#8629HomePage</a>
     <h2>New post</h2>
     <form method="POST" class="new-post">{% csrf_token %}
         {{ form.as_p }}

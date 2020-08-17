@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block content%}
+  <a href="{% url 'homepage' %}">&#8629HomePage</a>
+  <h2 >
+      My information
+      </h2>
+  <div>
+    <p class="date">
+    {% if info.changed_date %}
+    Last edited at {{info.changed_date}}
+    {% endif %}
+    </p>
+    <p>
+    <img src="{{info.photo_url}}" width="118" height="165" style="position:absolute;margin-left:100px">
+    <pre>
+      <font style="margin-left: 300px" size= "15" color = "black">Mobile: {{info.mobile}}
+                  Email: <a href="https://outlook.live.com/owa">{{info.email}}</a>
+        </pre>
+    </p>
+    <p class='post'>
+      {{info.my_words}}
+      </p>
+    </div>
+{% endblock %}

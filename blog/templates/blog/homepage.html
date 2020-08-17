@@ -1,0 +1,43 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <style>
+    body{ margin:0;height:100%}
+    html{height:100%}
+    #left{postion:absolute;top:0;left:0;width:300px;height:100px;}
+    #right{postion:absolute;top:0;left:400px;top:0;heigth:100px;margin-left:20px;}
+    /* #left1{postion:absolute;left:0;right:0;width:600px;margin-top:120px;} */
+    #left2{float:left;width:500px;margin-top:120px;}
+    #right1{postion:absolute;top:0;width:100%;margin-left:500px;margin-top:10px;}
+    </style>
+
+  {% if user.is_authenticated %}
+    <a id="left" href="{% url 'info_edit' %}" class = "new-post-btn"><css-icon class="icon-plus"></css-icon>Edit my info</a>
+  {% else %}
+    <a id="left" href="{% url 'post_admin' %}" class = "new-post-btn"><css-icon class="icon-person"></css-icon>Login</a>
+  {% endif %}
+    <a id = "right" href="{% url 'post_new' %}" class = "new-post-btn"><css-icon class="icon-plus"></css-icon>Leave your message</a>
+    <div id="left2">
+      <p class="date">
+      {% if info.changed_date %}
+      Last edited at {{info.changed_date}}
+      {% endif %}
+      </p>
+      <p>
+      <a href="{% url 'info_detail' %}"><img src="{{info.photo_url}}" width="118" height="165"></a>
+      <pre>
+        <font style="margin-left: 0px;width:300px" size= "15" color = "black">Mobile: {{info.mobile}}
+  Email: <a href="https://outlook.live.com/owa">{{info.email}}</a>
+          </pre>
+      </p>
+    </div>
+    <div id="right1">
+    {% for post in current_posts %}
+      <div class="date">
+        <p>published: {{ post.published_date }}</p>
+          </div>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+              <p class="post post-border">{{ post.text|linebreaksbr }}</p>
+      {% endfor %}
+    </div>
+{% endblock %}
