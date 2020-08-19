@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+{% block content%}
+  {% if form.errors %}
+    <h1>Your username and password didn't match. Please try again.</h1>
+    {% endif %}
+    <h1>Welcome to my cv pages</h1>
+    <form method="post" action="{% url 'login' %}">
+  <!-- Protect your last login form not used by others -->
+    {% csrf_token %}
+      <table style="margin-left: 800px;margin-top:200px;" width=200 height=150>
+       <tr>
+           <td>{{ form.username.label_tag }}</td>
+           <td>{{ form.username }}</td>
+       </tr>
+       <tr>
+           <td>{{ form.password.label_tag }}</td>
+           <td>{{ form.password }}</td>
+       </tr>
+      </table>
+
+       <input class="newbtn" type="submit" value="login" />
+       <input type="hidden" name="next" value="{{ next }}" />
+   </form>
+   <button type="submit" value="guest" class="newbtn"><a href ="{% url 'homepage' %}">Guest</a></button>
+   {% endblock %}

@@ -1,5 +1,7 @@
 {% extends 'blog/base.html' %}
 
+<!-- show post list of five posts a page, next page for new posts -->
+
 {% block content%}
 <a href="{% url 'homepage' %}">&#8629HomePage</a>
 {% for post in current_posts %}
@@ -7,6 +9,9 @@
     <p>published: {{ post.published_date }}</p>
       </div>
         <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+          <p class="post">{{post.author}}</p>
           <p class="post post-border">{{ post.text|linebreaksbr }}</p>
+          <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
   {% endfor %}
+
 {% endblock %}

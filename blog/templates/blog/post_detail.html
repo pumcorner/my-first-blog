@@ -5,7 +5,8 @@
 
     <a href="{% url 'homepage' %}">&#8629HomePage</a>
     {% if user.is_authenticated %}
-    <a class="btn-edit" href="{% url 'post_edit' pk=post.pk %}"><css-icon class ="icon-edit"></css-icon></a>
+    <a class="btn-edit" href="{% url 'post_edit' pk=post.pk %}">edit<css-icon class ="icon-edit"></css-icon></a>
+    <a class="btn-edit" href="{% url 'post_delete' pk=post.pk %}">delete<css-icon class="icon-delete"></css-icon></a>
     {% endif %}
   {% if post.published_date %}
     <div class="date">
@@ -13,6 +14,24 @@
       </div>
     {%endif%}
   <h2 class="color-blue">{{post.title}}</h2>
-  <p class="post">{{ post.text|linebreaksbr }}</p>
+  <p class="post">{{post.author}}</p>
+  <p class="post post-border">{{ post.text|linebreaksbr }}</p>
+  <a class="btn-edit" href="{% url 'post_comment' pk=post.pk %}"><css-icon class="icon-edit">comment</css-icon></a>
+  {% for comment in post.comments.all %}
+  {% if user.is_authenticated or comment.approved_comment %}
+    <div class="comment">
+        <div class="date">{{ comment.created_date }}</div>
+        {% if user.is_authenticated %}
+        <a style="postion:absolute;margin-left:480px;" href="{% url 'comment_delete' pk=comment.pk %}"><css-icon class="icon-delete"></xss-icon></a>
+        <a href="{% url 'comment_approve' pk=comment.pk %}"><css-icon class="icon-check"></css-icon></a>
+        {% endif %}
+        <p><strong>{{ comment.author }}</strong></p>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+    {% endif %}
+    {% empty %}
+    <p class="comment">No comments here yet :(</p>
+
   </div>
+{% endfor %}
   {% endblock %}

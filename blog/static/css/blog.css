@@ -16,9 +16,18 @@ h2{
   font-weight: bolder;
 }
 .post{
-  color: black;
-  font-size: 20px;
+  color: #FFA07A;
+  font-size: 50px;
   margin-left: 40px;
+  font-family:'Bodoni MT';
+  text-shadow:3px 3px 2px #656B79;
+}
+.comment{
+    color:#2F4F4F;
+    font-size:20px;
+    margin:20px 0px 20px 20px;
+    line-height: 1px;
+    font-family: 'Lucida Bright';
 }
 .page-image{
   height: 100%;
@@ -27,6 +36,7 @@ h2{
   background-size: cover;
   position: absolute;
   overflow: hidden;
+  clear:both;
 }
 .color-white{
   color: #A0522D;
@@ -40,6 +50,7 @@ h2{
 .new-post-btn{
   position: absolute;
   left:2%; top: 15%;
+  text-shadow:3px 3px 2px #656B79;
 }
 .newbtn{
   -webkit-transition-duration: 0.4s;
@@ -50,6 +61,7 @@ h2{
   font-weight: bold;
   background-color: white;
   border: 2px solid #4CAF50;
+  text-shadow:3px 3px 2px #656B79;
 }
 .newbtn:hover{
   background-color: #4CAF50;
@@ -59,6 +71,7 @@ h2{
   width: 60%;
   margin-left: 50px;
 }
+
 .post-border{
   border-radius: 10%;
   border-width: thin;
@@ -138,7 +151,28 @@ css-icon::after {
   transform: translate(-50%, -50%) rotate(45deg);
 }
 .icon-stop::after {
-  width: .9em; height: .9em;
+  width: .9em;
+  height: .9em;
   border: 2px solid;
   border-radius: 50%;
+}
+.icon-delete::before {
+  width: .75em; height: .6em;
+  border: 2px solid;
+  border-top: 0;
+  border-radius: 0 0 2px 2px;
+  top: 70%;
+}
+.icon-delete::after {
+  width: .5em;
+  border-top: 2px solid;
+  box-shadow: -.2em .2em, .2em .2em;
+  top: 1px;
+}
+.icon-check::before {
+  border-style: solid;
+  border-width: 0 0 2px 2px;
+  height: .5em; width: .9em;
+  -ms-transform: translate(-50%, -.375em) rotate(-45deg);
+  transform: translate(-50%, -.375em) rotate(-45deg);
 }

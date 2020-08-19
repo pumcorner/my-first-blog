@@ -5,18 +5,40 @@
     body{ margin:0;height:100%}
     html{height:100%}
     #left{postion:absolute;top:0;left:0;width:300px;height:100px;}
-    #right{postion:absolute;top:0;left:400px;top:0;heigth:100px;margin-left:20px;}
+    #right{postion:absolute;top:0;left:580px;top:0;heigth:100px;margin-left:20px;}
     /* #left1{postion:absolute;left:0;right:0;width:600px;margin-top:120px;} */
     #left2{float:left;width:500px;margin-top:120px;}
-    #right1{postion:absolute;top:0;width:100%;margin-left:500px;margin-top:10px;}
+    #right1{top:0;width:200px;padding:10px 600px 0px 600px;}
+    #right2{float:right;top:0;fond-family:'Verdana';width:800px;color:#FFA07A;text-shadow:3px 3px 2px #656B79;}
+    #CounterVisitor{fond-family: "Lucida sans"; postion:right;top:0;margin-left:1500px;color:#FFA07A;text-shadow:3px 3px 2px #656B79;}
     </style>
 
+    <div id="CounterVisitor"></div>
+    <script>
+      var n = localStorage.getItem('on_load_counter');
+      if (n === null) {
+          n = 0;
+        }
+        n++;
+        localStorage.setItem("on_load_counter", n);
+        nums = n.toString().split('').map(Number);
+        document.getElementById('CounterVisitor').innerHTML = 'Today have visitors :';
+        for (var i of nums) {
+        document.getElementById('CounterVisitor').innerHTML += '<span class="counter-item">' + i + '</span>';
+        }
+        </script>
   {% if user.is_authenticated %}
+    <h2>Welcome back! {{user.username}}</h2>
     <a id="left" href="{% url 'info_edit' %}" class = "new-post-btn"><css-icon class="icon-plus"></css-icon>Edit my info</a>
+    <a href="{% url 'logout' %}" class = "new-post-btn"><css-icon class="icon-stop"></css-icon>Log out</a>
   {% else %}
-    <a id="left" href="{% url 'post_admin' %}" class = "new-post-btn"><css-icon class="icon-person"></css-icon>Login</a>
+    <a id="left" href="{% url 'login' %}" class = "new-post-btn"><css-icon class="icon-person"></css-icon>Login</a>
   {% endif %}
-    <a id = "right" href="{% url 'post_new' %}" class = "new-post-btn"><css-icon class="icon-plus"></css-icon>Leave your message</a>
+
+  <!-- Left part displays the quick view for personal_info -->
+
+  <!-- In the case one user login as one guest -->
+    <a id = "right" href="{% url 'post_new' %}" class = "new-post-btn"><css-icon class="icon-edit"></css-icon>Leave your message</a>
     <div id="left2">
       <p class="date">
       {% if info.changed_date %}
@@ -26,18 +48,32 @@
       <p>
       <a href="{% url 'info_detail' %}"><img src="{{info.photo_url}}" width="118" height="165"></a>
       <pre>
-        <font style="margin-left: 0px;width:300px" size= "15" color = "black">Mobile: {{info.mobile}}
-  Email: <a href="https://outlook.live.com/owa">{{info.email}}</a>
+        <font style="margin-left: 0px;width:300px;text-shadow:3px 3px 2px #656B79;" size= "15" color = "white">
+Mobile:
+{{info.mobile}}
+
+Email:
+<a href="https://outlook.live.com/owa">{{info.email}}</a>
           </pre>
       </p>
     </div>
+
+
+  <!-- The welcome words for visitors -->
+    {% if user.is_authenticated == False %}
+      <p id="right2">Welcome to my webpage CV, many thanks for your visit<br>
+        Try to click my selfie to get more details.<br>
+        And don't forget to leave you message by clcking on the upright pencil icon<br>
+        Have a good day!
+        </p>
+      {%endif %}
+    <!-- right part displays the post list -->
     <div id="right1">
     {% for post in current_posts %}
-      <div class="date">
-        <p>published: {{ post.published_date }}</p>
-          </div>
+        <p class="date">published at {{ post.published_date }}</p>
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-              <p class="post post-border">{{ post.text|linebreaksbr }}</p>
+            <a class="date" href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
       {% endfor %}
     </div>
+
 {% endblock %}
