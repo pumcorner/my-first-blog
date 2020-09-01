@@ -40,11 +40,11 @@
   <!-- In the case one user login as one guest -->
     <a id = "right" href="{% url 'post_new' %}" class = "new-post-btn"><css-icon class="icon-edit"></css-icon>Leave your message</a>
     <div id="left2">
-      <p class="date">
+      <pre class="date">
       {% if info.changed_date %}
       Last edited at {{info.changed_date}}
       {% endif %}
-      </p>
+      </pre>
       <p>
       <a href="{% url 'info_detail' %}"><img src="{{info.photo_url}}" width="118" height="165"></a>
       <pre>
@@ -70,7 +70,7 @@ Email:
     <!-- right part displays the post list -->
     <div id="right1">
     {% for post in current_posts %}
-        <p class="date">published at {{ post.published_date }}</p>
+        <pre class="date">published at {{ post.published_date }}</pre>
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <a class="date" href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
       {% endfor %}

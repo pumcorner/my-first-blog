@@ -1,7 +1,10 @@
 {% load static %}
-<html>
+<html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width initial-scale=1 shrink-to-fit=no">
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" type="text/css">
+        <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <title >SilinLi CV
         </title>
@@ -12,8 +15,12 @@
             <!-- <a href="{% url 'info_detail' %}">MYinfo</a> -->
         </div>
         <div class="page-image">
-          {% block content%}
-          {% endblock %}
+          <div class="">
+            <div class="">
+                {% block content%}
+                {% endblock %}
+              </div>
             </div>
+          </div>
     </body>
 </html>
